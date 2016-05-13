@@ -1930,6 +1930,21 @@ jQuery(document).ready(function($) { // start document_ready_1
 		}
 		jQuery( this ).attr( 'style', '' );
 	});
+	/*h2s changed*/
+	jQuery('.header-wrapper .mobile-nav-holder ul#mobile-nav').find('li a[href*="#"]:not([href="#"])').each(function(){
+		jQuery(this).click(function(){
+			 var e = this.hash;
+			  var hash = e.replace('#','');
+			  var anchor = jQuery('#'+hash);
+			  if(anchor.length){
+			  	jQuery('.header-wrapper #mobile-nav, .sh-mobile-nav-holder #mobile-nav').slideToggle(200, 'easeOutQuad');
+			  	jQuery('html,body').animate({
+				        scrollTop: anchor.offset().top
+				      }, 500);
+			  }
+			  return false;
+		});
+	})
 	jQuery('.header-wrapper .mobile-nav-holder .mobile-selector').click(function(){
 		if( jQuery('.header-wrapper .mobile-nav-holder #mobile-nav').hasClass( 'mobile-menu-expanded' ) ) {
 			jQuery('.header-wrapper .mobile-nav-holder #mobile-nav').removeClass( 'mobile-menu-expanded' );

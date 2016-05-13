@@ -118,9 +118,12 @@ function rpwe_get_recent_posts( $args = array() ) {
 					$img_url  = wp_get_attachment_url( $thumb_id ); // Get img URL.
 
 					// Display the image url and crop using the resizer.
-					$image    = rpwe_resize( $img_url, $args['thumb_width'], $args['thumb_height'], true ); 
+					$image    = rpwe_resize( $img_url, $args['thumb_width'], $args['thumb_height'], true );
+					//get anchor menu h2s
+					$anchor = get_post_custom_values('menu_anchor', $post_id);
+					$id = count($anchor>0)&&!empty($anchor[0])?' id ="'.$anchor[0].'"':'';
 					// Start recent posts markup.
-					$html .= '<li  class="rpwe-li rpwe-clearfix fusion-column fusion-one-third one_third fusion-layout-column">';
+					$html .= '<li '.$id.' class="rpwe-li rpwe-clearfix fusion-column fusion-one-third one_third fusion-layout-column">';
 						
 						if ( $args['thumb'] ) :
 
